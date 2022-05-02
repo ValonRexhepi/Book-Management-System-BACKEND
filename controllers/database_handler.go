@@ -13,7 +13,8 @@ var DB *gorm.DB
 // Connect method that will initialize the connection
 // to the database.
 func Connect() {
-	connection, err := gorm.Open(mysql.Open("root:secret@/BookDB"), &gorm.Config{})
+	cst := "root:secret@tcp(127.0.0.1:3306)/BookDB?charset=utf8mb4&parseTime=True&loc=Local"
+	connection, err := gorm.Open(mysql.Open(cst), &gorm.Config{})
 	if err != nil {
 		log.Fatalln("Connection to database failed: ", err)
 	}
