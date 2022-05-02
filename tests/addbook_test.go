@@ -9,7 +9,7 @@ import (
 	"github.com/ValonRexhepi/Book-Management-System-REST/models"
 )
 
-// TestAddBook test sucessfully adding books in the database.
+// TestAddBook test successfully adding books in the database.
 func TestAddBookSuccess(t *testing.T) {
 	controllers.Connect()
 	controllers.Migrate()

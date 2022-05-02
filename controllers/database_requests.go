@@ -27,3 +27,17 @@ func UpdateBook(bookToUpdate *models.Book) (err error) {
 
 	return nil
 }
+
+// GetAllBooks function to return all book in the database.
+// Returns an empty list and the error if error,
+// else will return the list of books and nil.
+func GetAllBooks() ([]*models.Book, error) {
+	var books []*models.Book
+	result := DB.Find(&books)
+
+	if result.Error != nil {
+		return []*models.Book{}, result.Error
+	}
+
+	return books, nil
+}

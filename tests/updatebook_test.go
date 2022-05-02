@@ -8,8 +8,8 @@ import (
 	"github.com/ValonRexhepi/Book-Management-System-REST/models"
 )
 
-// TestUpdateBook test sucessfully updating books in the database.
-func TestUpdateBookSucess(t *testing.T) {
+// TestUpdateBook test successfully updating books in the database.
+func TestUpdateBookSuccess(t *testing.T) {
 	controllers.Connect()
 	controllers.Migrate()
 

@@ -11,14 +11,14 @@ The goal of this project is to create a Go application that implements a rest AP
 - [x] Create the Controllers
   - [x] Create and open the Go Database Connection
   - [x] Automigrate the Models
-  - [ ] Method to Get All Books
+  - [x] Method to Get All Books
   - [ ] Method to Get a Book by Name
   - [ ] Method to Get a Book by Id
   - [x] Method to Update a Book
   - [ ] Method to Delete a Book
   - [x] Method to Add a Book
 - [ ] Create the Tests
-  - [ ] Test Method to Get All Books
+  - [x] Test Method to Get All Books
   - [ ] Test Method to Get a Book by Name
   - [ ] Test Method to Get a Book by Id
   - [x] Test Method to Update a Book

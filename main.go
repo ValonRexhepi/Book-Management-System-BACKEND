@@ -20,16 +20,31 @@ func main() {
 		PublishedDate: time.Now(),
 		ISBN:          "asads",
 	}
-	id, err := controllers.AddBook(&book)
-	fmt.Println("Inserted ID", id)
-	fmt.Println("Error", err)
+	book2 := models.Book{
+		Title:         "Test title 2",
+		Author:        "Test Author 2",
+		TotalPages:    100,
+		PublishedDate: time.Now(),
+		ISBN:          "asads2",
+	}
+	controllers.AddBook(&book)
+	controllers.AddBook(&book2)
 
 	// Updating a book
 	book.Author = "Valon Rexhepi"
-	err = controllers.UpdateBook(&book)
-	fmt.Println("Err updating", err)
+	controllers.UpdateBook(&book)
+
+	books, _ := controllers.GetAllBooks()
+
+	// for _, book := range books {
+	// 	fmt.Printf("Book finded : %v\n", book)
+	// }
+
+	fmt.Printf("Book finded : %+v\n", books)
 
 	fmt.Println("App Started")
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
+
 	for {
 
 	}
