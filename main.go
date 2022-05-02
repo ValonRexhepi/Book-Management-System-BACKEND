@@ -34,15 +34,14 @@ func main() {
 	book.Author = "Valon Rexhepi"
 	controllers.UpdateBook(&book)
 
-	books, _ := controllers.GetAllBooks()
+	controllers.DeleteBook(&book)
 
-	// for _, book := range books {
-	// 	fmt.Printf("Book finded : %v\n", book)
-	// }
+	books, _ := controllers.GetAllBooks()
 
 	fmt.Printf("Book finded : %+v\n", books)
 
 	fmt.Println("App Started")
+
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 
 	for {

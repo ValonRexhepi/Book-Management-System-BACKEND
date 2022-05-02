@@ -28,6 +28,18 @@ func UpdateBook(bookToUpdate *models.Book) (err error) {
 	return nil
 }
 
+// DeleteBook function to delete a book in the database.
+// Returns nil if no error else returns the error.
+func DeleteBook(bookToDelete *models.Book) (err error) {
+	result := DB.Delete(&bookToDelete)
+
+	if result.Error != nil {
+		return result.Error
+	}
+
+	return nil
+}
+
 // GetAllBooks function to return all book in the database.
 // Returns an empty list and the error if error,
 // else will return the list of books and nil.
