@@ -36,15 +36,20 @@ func main() {
 
 	controllers.DeleteBook(&book)
 
+	// Get all books
 	books, _ := controllers.GetAllBooks()
+	fmt.Printf("Books finded : %+v\n", books)
 
-	fmt.Printf("Book finded : %+v\n", books)
+	// Get book by ISBN
+	bookByIsbn, _ := controllers.GetBookByISBN("asads2")
+	fmt.Printf("Book by ISBN finded : %+v\n", bookByIsbn)
+
+	// Get book by ISBN
+	bookByID, _ := controllers.GetBookByID(2)
+	fmt.Printf("Book by ID finded : %+v\n", bookByID)
 
 	fmt.Println("App Started")
 
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 
-	for {
-
-	}
 }

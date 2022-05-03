@@ -12,15 +12,15 @@ The goal of this project is to create a Go application that implements a rest AP
   - [x] Create and open the Go Database Connection
   - [x] Automigrate the Models
   - [x] Method to Get All Books
-  - [ ] Method to Get a Book by ISBN
-  - [ ] Method to Get a Book by Id
+  - [x] Method to Get a Book by ISBN
+  - [x] Method to Get a Book by Id
   - [x] Method to Update a Book
   - [x] Method to Delete a Book
   - [x] Method to Add a Book
-- [ ] Create the Tests
+- [x] Create the Tests
   - [x] Test Method to Get All Books
-  - [ ] Test Method to Get a Book by ISBN
-  - [ ] Test Method to Get a Book by Id
+  - [x] Test Method to Get a Book by ISBN
+  - [x] Test Method to Get a Book by Id
   - [x] Test Method to Update a Book
   - [x] Test Method to Delete a Book
   - [x] Test Method to Add a Book

@@ -41,7 +41,7 @@ func DeleteBook(bookToDelete *models.Book) (err error) {
 }
 
 // GetAllBooks function to return all book in the database.
-// Returns an empty list and the error if error,
+// Returns an empty list and the error if fail,
 // else will return the list of books and nil.
 func GetAllBooks() ([]*models.Book, error) {
 	var books []*models.Book
@@ -52,4 +52,32 @@ func GetAllBooks() ([]*models.Book, error) {
 	}
 
 	return books, nil
+}
+
+// GetBookByISBN function to return a book matching an ISBN in the database.
+// Returns an empty book and the error if fail,
+// else will return the book and nil.
+func GetBookByISBN(isbn string) (*models.Book, error) {
+	var book *models.Book
+	result := DB.Where("ISBN = ?", isbn).First(&book)
+
+	if result.Error != nil {
+		return &models.Book{}, result.Error
+	}
+
+	return book, nil
+}
+
+// GetBookByID function to return a book matching an ID in the database.
+// Returns an empty book and the error if fail,
+// else will return the book and nil.
+func GetBookByID(id uint) (*models.Book, error) {
+	var book *models.Book
+	result := DB.First(&book, id)
+
+	if result.Error != nil {
+		return &models.Book{}, result.Error
+	}
+
+	return book, nil
 }
