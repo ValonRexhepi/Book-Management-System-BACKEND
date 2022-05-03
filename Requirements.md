@@ -19,13 +19,13 @@ The goal of this project is to create a Go application that implements a rest AP
   - [x] Method to Add a Book
 - [x] Create the Server Component
   - [x] Create Method to launch, bind routes and run the server
-- [ ] Create the Routes Component
+- [x] Create the Routes Component
   - [x] Route to Get All Books
   - [x] Route to Get a Book by ISBN
   - [x] Route to Get a Book by ID
-  - [ ] Route to Update a book
-  - [ ] Route to Delete a Book
-  - [ ] Route to Add a book
+  - [x] Route to Update a book
+  - [x] Route to Delete a Book
+  - [x] Route to Add a book
 - [x] Create Unit Tests
   - [x] Test Method to Get All Books
   - [x] Test Method to Get a Book by ISBN
@@ -33,13 +33,13 @@ The goal of this project is to create a Go application that implements a rest AP
   - [x] Test Method to Update a Book
   - [x] Test Method to Delete a Book
   - [x] Test Method to Add a Book
-- [ ] Manual Test with Postman
+- [x] Manual Test with Postman
   - [x] Test Route to Get All Books
   - [x] Test Route to Get a Book by ISBN
   - [x] Test Route to Get a Book by ID
-  - [ ] Test Route to Update a Book
-  - [ ] Test Route to Delete a Book
-  - [ ] Test Routte to Add a Book
+  - [x] Test Route to Update a Book
+  - [x] Test Route to Delete a Book
+  - [x] Test Routte to Add a Book
 
 ## Technologies Used
 ---

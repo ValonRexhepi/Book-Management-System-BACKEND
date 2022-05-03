@@ -1,12 +1,21 @@
 package controllers
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/ValonRexhepi/Book-Management-System-REST/models"
 )
 
-// DeleteBook function to delete a book in the database.
+// DeleteBookByID function to delete a book in the database.
 // Returns nil if no error else returns the error.
-func DeleteBook(id uint64) (err error) {
+func DeleteBookByID(id uint64) (err error) {
+	_, err = GetBookByID(id)
+
+	if err != nil {
+		return fmt.Errorf("no entry found in database for book with id: %v", id)
+	}
+
 	result := DB.Delete(&models.Book{}, id)
 
 	if result.Error != nil {
@@ -61,7 +70,13 @@ func GetBookByID(id uint64) (*models.Book, error) {
 // AddBook function to add a new book to the database.
 // Returns the id of the new book and nil if no error else returns the error.
 func AddBook(bookToAdd *models.Book) (id uint64, err error) {
-	result := DB.Create(&bookToAdd)
+	if len(strings.TrimSpace(bookToAdd.Title)) == 0 ||
+		len(strings.TrimSpace(bookToAdd.Author)) == 0 ||
+		len(strings.TrimSpace(bookToAdd.ISBN)) == 0 {
+		return 0, fmt.Errorf("fill all fields")
+	}
+
+	result := DB.Omit("ID").Create(&bookToAdd)
 
 	if result.Error != nil {
 		return 0, result.Error
@@ -73,7 +88,19 @@ func AddBook(bookToAdd *models.Book) (id uint64, err error) {
 // UpdateBook function to update a book in the database.
 // Returns nil if no error else returns the error.
 func UpdateBook(bookToUpdate *models.Book) (err error) {
-	result := DB.Save(&bookToUpdate)
+	if len(strings.TrimSpace(bookToUpdate.Title)) == 0 ||
+		len(strings.TrimSpace(bookToUpdate.Author)) == 0 ||
+		len(strings.TrimSpace(bookToUpdate.ISBN)) == 0 {
+		return fmt.Errorf("fill all fields")
+	}
+
+	_, err = GetBookByID(bookToUpdate.ID)
+
+	if err != nil {
+		return fmt.Errorf("no entry found in database for book with id: %v", bookToUpdate.ID)
+	}
+
+	result := DB.Omit("ID").Save(&bookToUpdate)
 
 	if result.Error != nil {
 		return result.Error

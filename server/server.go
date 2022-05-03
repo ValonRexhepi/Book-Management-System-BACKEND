@@ -13,13 +13,13 @@ import (
 func LaunchServer() {
 	router := gin.Default()
 
-	router.DELETE("/books/deletebook/:bookid")
+	router.DELETE("/books/deletebook/:bookid", routes.DeleteBookByID)
 
 	router.GET("/books", routes.GetAllBooks)
 	router.GET("/books/getbookbyid/:bookid", routes.GetBookByID)
 	router.GET("/books/getbookbyisbn/:bookisbn", routes.GetBookByISBN)
 
-	router.POST("/books/updatebook/:bookid", routes.UpdateBook)
+	router.POST("/books/updatebook", routes.UpdateBook)
 	router.POST("/books", routes.AddBook)
 
 	err := router.Run("localhost:8080")

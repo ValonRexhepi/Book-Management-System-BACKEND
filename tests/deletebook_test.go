@@ -11,6 +11,7 @@ import (
 // TestRemoveBook test successfully delete a book in the database.
 func TestRemoveBookSucces(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	firstBook := models.Book{
@@ -30,7 +31,7 @@ func TestRemoveBookSucces(t *testing.T) {
 			len(booksInDb), err)
 	}
 
-	err = controllers.DeleteBook(firstBook.ID)
+	err = controllers.DeleteBookByID(firstBook.ID)
 
 	if err != nil {
 		t.Errorf("Expected to success delete but got %v", err)
@@ -48,6 +49,7 @@ func TestRemoveBookSucces(t *testing.T) {
 // TestRemoveBook test failed delete a book in the database.
 func TestRemoveBookFail(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	firstBook := models.Book{
@@ -65,7 +67,7 @@ func TestRemoveBookFail(t *testing.T) {
 			len(booksInDb), err)
 	}
 
-	err = controllers.DeleteBook(firstBook.ID)
+	err = controllers.DeleteBookByID(firstBook.ID)
 	booksInDb, errGet := controllers.GetAllBooks()
 
 	if (len(booksInDb) != 0 && err == nil) || errGet != nil {

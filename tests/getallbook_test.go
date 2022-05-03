@@ -11,6 +11,7 @@ import (
 // TestGetAllBook test successfully gets all books in the database.
 func TestGetAllBookSuccess(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	firstBook := models.Book{
@@ -52,6 +53,7 @@ func TestGetAllBookSuccess(t *testing.T) {
 // TestGetAllBook test failed geting all books in the database.
 func TestGetAllBookFail(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	books, err := controllers.GetAllBooks()

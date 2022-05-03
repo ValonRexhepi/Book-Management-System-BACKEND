@@ -11,6 +11,7 @@ import (
 // TestUpdateBook test successfully updating books in the database.
 func TestUpdateBookSuccess(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	firstBook := models.Book{
@@ -45,6 +46,7 @@ func TestUpdateBookSuccess(t *testing.T) {
 // TestUpdateBook test failed updating books in the database.
 func TestUpdateBookFail(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	firstBook := models.Book{

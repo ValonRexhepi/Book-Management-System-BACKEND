@@ -12,6 +12,7 @@ import (
 // TestAddBook test successfully adding books in the database.
 func TestAddBookSuccess(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	var addBookSuccessTests = []models.Book{
@@ -46,6 +47,7 @@ func TestAddBookSuccess(t *testing.T) {
 // TestAddBook test failed adding books in the database.
 func TestAddBookFail(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	exampleBook := models.Book{
@@ -58,32 +60,19 @@ func TestAddBookFail(t *testing.T) {
 
 	controllers.AddBook(&exampleBook)
 
-	var addBookFailTests = []models.Book{
-		{
-			Title:         "La Divina Comedia",
-			Author:        "Dante Alighieri",
-			TotalPages:    250,
-			PublishedDate: time.Date(1300, time.July, 25, 0, 0, 0, 0, time.UTC),
-			ISBN:          "9780747538486",
-		},
-		{
-			ID:            exampleBook.ID,
-			Title:         "La Divina Comedia",
-			Author:        "Dante Alighieri",
-			TotalPages:    250,
-			PublishedDate: time.Date(1300, time.July, 25, 0, 0, 0, 0, time.UTC),
-			ISBN:          "978444988747538486",
-		},
+	var addBook = models.Book{
+
+		Title:         "La Divina Comedia",
+		Author:        "Dante Alighieri",
+		TotalPages:    250,
+		PublishedDate: time.Date(1300, time.July, 25, 0, 0, 0, 0, time.UTC),
+		ISBN:          "9780747538486",
 	}
 
-	for _, tt := range addBookFailTests {
-		testname := fmt.Sprintf("TEST:%s, %s", tt.Title, tt.ISBN)
-		t.Run(testname, func(t *testing.T) {
-			id, err := controllers.AddBook(&tt)
-			if id != 0 || err == nil {
-				t.Errorf("Expected fail and got %v", err)
-			}
-		})
+	id, err := controllers.AddBook(&addBook)
+	if id != 0 || err == nil {
+		t.Errorf("Expected fail and got %v", err)
 	}
+
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 }

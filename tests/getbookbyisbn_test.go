@@ -11,6 +11,7 @@ import (
 // TestGetISBNBook test successfully gets a book by ISBN in the database.
 func TestGetISBNBookSuccess(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	firstBook := models.Book{
@@ -39,6 +40,7 @@ func TestGetISBNBookSuccess(t *testing.T) {
 // TestGetISBNBook test failed geting a book by ISBN in the database.
 func TestGetISBNBookFail(t *testing.T) {
 	controllers.Connect()
+	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
 	firstBook := models.Book{
