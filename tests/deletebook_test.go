@@ -30,7 +30,7 @@ func TestRemoveBookSucces(t *testing.T) {
 			len(booksInDb), err)
 	}
 
-	err = controllers.DeleteBook(&firstBook)
+	err = controllers.DeleteBook(firstBook.ID)
 
 	if err != nil {
 		t.Errorf("Expected to success delete but got %v", err)
@@ -38,7 +38,7 @@ func TestRemoveBookSucces(t *testing.T) {
 
 	booksInDb, err = controllers.GetAllBooks()
 	if len(booksInDb) != 0 || err != nil {
-		t.Errorf("Expected to have at zero book but got %v with error: %v\n",
+		t.Errorf("Expected to have zero book but got %v with error: %v\n",
 			len(booksInDb), err)
 	}
 
@@ -61,20 +61,15 @@ func TestRemoveBookFail(t *testing.T) {
 	booksInDb, err := controllers.GetAllBooks()
 
 	if len(booksInDb) != 0 || err != nil {
-		t.Errorf("Expected to have at zero but got %v with error: %v\n",
+		t.Errorf("Expected to have zero book but got %v with error: %v\n",
 			len(booksInDb), err)
 	}
 
-	err = controllers.DeleteBook(&firstBook)
+	err = controllers.DeleteBook(firstBook.ID)
+	booksInDb, errGet := controllers.GetAllBooks()
 
-	if err == nil {
+	if (len(booksInDb) != 0 && err == nil) || errGet != nil {
 		t.Errorf("Expected to fail delete but got %v", err)
-	}
-
-	booksInDb, err = controllers.GetAllBooks()
-	if len(booksInDb) != 0 || err != nil {
-		t.Errorf("Expected to have at zero but got %v with error: %v\n",
-			len(booksInDb), err)
 	}
 
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
