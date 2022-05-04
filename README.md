@@ -14,14 +14,14 @@ for the use of various technologies with Go.
 
 ## Routes Requests
 - [DELETE]
-  - localhost:8080/books/deletebook/:bookid --> Delete book by ID
+  - localhost:8080/books/deletebook/:bookid &rarr; Delete book by ID
 - [POST]
-  - localhost:8080/books --> Add a new book
-  - localhost:8080/books/updatebook --> Update existing book
+  - localhost:8080/books &rarr; Add a new book
+  - localhost:8080/books/updatebook &rarr; Update existing book
 - [GET] 
-	- localhost:8080/books --> Get all books
-	- localhost:8080/books/getbookbyid/:bookid --> Get book by ID
-	- localhost:8080/books/getbookbyisbn/:bookisbn --> Get book by ISBN
+	- localhost:8080/books &rarr; Get all books
+	- localhost:8080/books/getbookbyid/:bookid &rarr; Get book by ID
+	- localhost:8080/books/getbookbyisbn/:bookisbn &rarr; Get book by ISBN
 
 ## Libraries Used
 - [Gorm, ORM Management Library](https://gorm.io/index.html)
