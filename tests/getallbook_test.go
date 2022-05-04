@@ -8,7 +8,7 @@ import (
 	"github.com/ValonRexhepi/Book-Management-System-REST/models"
 )
 
-// TestGetAllBook test successfully gets all books in the database.
+// TestGetAllBookSuccess test the successfull retrieval of all books.
 func TestGetAllBookSuccess(t *testing.T) {
 	controllers.Connect()
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
@@ -39,6 +39,10 @@ func TestGetAllBookSuccess(t *testing.T) {
 		t.Errorf("Expected to success but got %v", err)
 	}
 
+	if len(booksInDb) != 2 {
+		t.Errorf("Expected to have %v books, but got %v", 2, len(booksInDb))
+	}
+
 	if !firstBook.Equal(booksInDb[0]) {
 		t.Errorf("Expected to have %v, but got %v", firstBook, booksInDb[0])
 	}
@@ -50,7 +54,7 @@ func TestGetAllBookSuccess(t *testing.T) {
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 }
 
-// TestGetAllBook test failed geting all books in the database.
+// TestGetAllBookFail test the failed retrieval of all books.
 func TestGetAllBookFail(t *testing.T) {
 	controllers.Connect()
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")

@@ -97,7 +97,8 @@ func UpdateBook(bookToUpdate *models.Book) (err error) {
 	_, err = GetBookByID(bookToUpdate.ID)
 
 	if err != nil {
-		return fmt.Errorf("no entry found in database for book with id: %v", bookToUpdate.ID)
+		return fmt.Errorf("no entry found in database for book with id: %v",
+			bookToUpdate.ID)
 	}
 
 	result := DB.Omit("ID").Save(&bookToUpdate)

@@ -9,7 +9,7 @@ import (
 	"github.com/ValonRexhepi/Book-Management-System-REST/models"
 )
 
-// TestAddBook test successfully adding books in the database.
+// TestAddBookSuccess test the successfull addition of new books.
 func TestAddBookSuccess(t *testing.T) {
 	controllers.Connect()
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
@@ -44,35 +44,56 @@ func TestAddBookSuccess(t *testing.T) {
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 }
 
-// TestAddBook test failed adding books in the database.
+// TestAddBookFail test the failed addition of new books.
 func TestAddBookFail(t *testing.T) {
 	controllers.Connect()
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 	controllers.Migrate()
 
-	exampleBook := models.Book{
-		Title:         "La Divina Comedia",
-		Author:        "Dante Alighieri",
-		TotalPages:    250,
-		PublishedDate: time.Date(1300, time.July, 25, 0, 0, 0, 0, time.UTC),
-		ISBN:          "9780747538486",
+	var exampleBook = models.Book{
+
+		Title:         "Harry Potter and the Philosopher's Stone",
+		Author:        "J. K. Rowling",
+		TotalPages:    320,
+		PublishedDate: time.Date(1997, time.June, 26, 0, 0, 0, 0, time.UTC),
+		ISBN:          "9780590353427",
 	}
 
 	controllers.AddBook(&exampleBook)
 
-	var addBook = models.Book{
+	var addBookSuccessFails = []models.Book{
+		{
 
-		Title:         "La Divina Comedia",
-		Author:        "Dante Alighieri",
-		TotalPages:    250,
-		PublishedDate: time.Date(1300, time.July, 25, 0, 0, 0, 0, time.UTC),
-		ISBN:          "9780747538486",
+			Title:         "New Book With Same ISBN",
+			Author:        "J. K. Rowling",
+			TotalPages:    320,
+			PublishedDate: time.Date(1997, time.June, 26, 0, 0, 0, 0, time.UTC),
+			ISBN:          "9780590353427",
+		},
+		{
+			Title:         "Harry Potter and the Philosopher's Stone",
+			Author:        "",
+			TotalPages:    320,
+			PublishedDate: time.Date(1997, time.June, 26, 0, 0, 0, 0, time.UTC),
+			ISBN:          "9780590353426",
+		},
+		{
+			Title: "		   ",
+			Author:        "J. K. Rowling",
+			TotalPages:    2511,
+			PublishedDate: time.Date(1998, time.July, 2, 0, 0, 0, 0, time.UTC),
+			ISBN:          "    ",
+		},
 	}
 
-	id, err := controllers.AddBook(&addBook)
-	if id != 0 || err == nil {
-		t.Errorf("Expected fail and got %v", err)
+	for _, tt := range addBookSuccessFails {
+		testname := fmt.Sprintf("TEST:%d, %v", tt.TotalPages, tt.PublishedDate)
+		t.Run(testname, func(t *testing.T) {
+			id, err := controllers.AddBook(&tt)
+			if id != 0 || err == nil {
+				t.Errorf("Expected fail and got %v", err)
+			}
+		})
 	}
-
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 }

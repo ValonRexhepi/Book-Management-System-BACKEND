@@ -8,8 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// DeleteBook function to delete a book in the database.
-// Returns nil if no error else returns the error.
+// LaunchServer function to define default router, define the routes
+// and run the server on port localhost:8080.
 func LaunchServer() {
 	router := gin.Default()
 

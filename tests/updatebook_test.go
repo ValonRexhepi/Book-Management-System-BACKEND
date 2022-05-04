@@ -8,7 +8,7 @@ import (
 	"github.com/ValonRexhepi/Book-Management-System-REST/models"
 )
 
-// TestUpdateBook test successfully updating books in the database.
+// TestUpdateBookSuccess test the successfull update of a book.
 func TestUpdateBookSuccess(t *testing.T) {
 	controllers.Connect()
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
@@ -40,10 +40,16 @@ func TestUpdateBookSuccess(t *testing.T) {
 		t.Errorf("Expected to update book but got %v", err)
 	}
 
+	updateBook, _ := controllers.GetBookByISBN("9780747538486")
+	if secondBook.TotalPages != updateBook.TotalPages {
+		t.Errorf("Expected to update total pages to 250 but got %v",
+			updateBook.TotalPages)
+	}
+
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 }
 
-// TestUpdateBook test failed updating books in the database.
+// TestUpdateBookFail test the failed update of a book
 func TestUpdateBookFail(t *testing.T) {
 	controllers.Connect()
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
@@ -70,6 +76,20 @@ func TestUpdateBookFail(t *testing.T) {
 
 	secondBook.ISBN = firstBook.ISBN
 	err := controllers.UpdateBook(&secondBook)
+
+	if err == nil {
+		t.Errorf("Expected to fail update book but got %v", err)
+	}
+
+	secondBook.ISBN = ""
+	err = controllers.UpdateBook(&secondBook)
+
+	if err == nil {
+		t.Errorf("Expected to fail update book but got %v", err)
+	}
+
+	secondBook.Title = ""
+	err = controllers.UpdateBook(&secondBook)
 
 	if err == nil {
 		t.Errorf("Expected to fail update book but got %v", err)

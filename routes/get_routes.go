@@ -9,9 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// GetAllBooks function to respond all books.
+// GetAllBooks function to respond to a get request for all books.
 // Respond by JSON object with error and empty list if error,
-// else respond with list of books.
+// else respond with the list of books.
 func GetAllBooks(c *gin.Context) {
 	books, err := controllers.GetAllBooks()
 
@@ -25,8 +25,8 @@ func GetAllBooks(c *gin.Context) {
 	c.JSON(http.StatusOK, books)
 }
 
-// GetBookByISBN function to respond a book matching an ISBN in the database.
-// Respond by JSON object with error and empty book if error,
+// GetBookByISBN function to respond to a get request for a book
+// matching an ISBN. Respond by JSON object with error and empty book if error,
 // else respond with the book.
 func GetBookByISBN(c *gin.Context) {
 	requestISBN := c.Param("bookisbn")
@@ -42,7 +42,7 @@ func GetBookByISBN(c *gin.Context) {
 	c.JSON(http.StatusOK, book)
 }
 
-// GetBookByID function to respond a book matching an ID in the database.
+// GetBookByID function to respond to a get request for a book matching an ID.
 // Respond by JSON object with error and empty book if error,
 // else respond with the book.
 func GetBookByID(c *gin.Context) {

@@ -8,7 +8,7 @@ import (
 	"github.com/ValonRexhepi/Book-Management-System-REST/models"
 )
 
-// TestGetIDBook test successfully gets a book by ID in the database.
+// TestGetIDBookSuccess test the successfull retrieval of a book by id.
 func TestGetIDBookSuccess(t *testing.T) {
 	controllers.Connect()
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
@@ -37,7 +37,7 @@ func TestGetIDBookSuccess(t *testing.T) {
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
 }
 
-// TestGetIDBook test failed geting a book by ID in the database.
+// TestGetIDBookFail test the failed retrieval of a book by id..
 func TestGetIDBookFail(t *testing.T) {
 	controllers.Connect()
 	controllers.DB.Exec("DROP TABLE IF EXISTS books")
@@ -51,7 +51,7 @@ func TestGetIDBookFail(t *testing.T) {
 		ISBN:          "9780590353427",
 	}
 
-	controllers.AddBook(&firstBook)
+	controllers.AddBook(&firstBook) // id will be 1
 
 	bookByIsbn, err := controllers.GetBookByID(2)
 

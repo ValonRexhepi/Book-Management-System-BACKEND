@@ -9,8 +9,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// DeleteBookByID function to respond to a book delete in the database.
-// Respond by JSON object with error and if error,
+// DeleteBookByID function to respond to a book delete request.
+// Respond by JSON object with error if error,
 // else respond with success message.
 func DeleteBookByID(c *gin.Context) {
 	requestID, err := strconv.ParseUint(c.Param("bookid"), 10, 32)
@@ -31,6 +31,7 @@ func DeleteBookByID(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"success": fmt.Sprintf("Successfully deleted book with id : %v", requestID),
+		"success": fmt.Sprintf("Successfully deleted book with id : %v",
+			requestID),
 	})
 }

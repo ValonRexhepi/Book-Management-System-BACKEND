@@ -8,6 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// DB variable that contains reference to the gorm.db object.
 var DB *gorm.DB
 
 // Connect method that will initialize the connection

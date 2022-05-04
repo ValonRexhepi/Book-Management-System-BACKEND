@@ -9,9 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// AddBook function to respond to a book added to the database.
+// AddBook function to respond to a post a new book.
 // Respond by JSON object with error if error,
-// else respond with success message and new book.
+// else respond with success message and new book added.
 func AddBook(c *gin.Context) {
 	var newBook models.Book
 
@@ -37,7 +37,7 @@ func AddBook(c *gin.Context) {
 
 }
 
-// UpdateBook function to respond to a book updated in the database.
+// UpdateBook function to respond to a post existing book for update.
 // Respond by JSON object with error if error,
 // else respond with success message and updated book.
 func UpdateBook(c *gin.Context) {
