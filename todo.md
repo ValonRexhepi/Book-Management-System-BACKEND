@@ -1,8 +1,4 @@
-# Book Management System REST Backend Requirements
-## Description
-The goal of this project is to create a Go application that implements a rest 
-API for book management. This API will serve as a demonstration and training 
-for the use of various technologies with Go. 
+# Book Management System REST Backend TODO
 ## To Implement
 - [x] Create the Database
   - [x] Create "BookDB" Database with MySQL Docker image
@@ -40,9 +36,3 @@ for the use of various technologies with Go.
   - [x] Test Route to Update a Book
   - [x] Test Route to Delete a Book
   - [x] Test Route to Add a Book
-
-## Technologies Used
-- Language: [Go](https://go.dev/dl/)
-- Database: [MySql Docker Image :latest](https://hub.docker.com/_/mysql)
-- ORM: [Gorm.io](https://gorm.io/index.html)
-- Go Web Framework: [Gin](https://github.com/gin-gonic/gin)
