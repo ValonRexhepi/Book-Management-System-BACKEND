@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/ValonRexhepi/Book-Management-System-REST/models"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/models"
 )
 
 // DeleteBookByID function to delete a book in the database.

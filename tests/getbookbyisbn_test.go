@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ValonRexhepi/Book-Management-System-REST/controllers"
-	"github.com/ValonRexhepi/Book-Management-System-REST/models"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/controllers"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/models"
 )
 
 // TestGetISBNBookSuccess test successfull retrieval of a book by isbn.

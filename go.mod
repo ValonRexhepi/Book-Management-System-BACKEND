@@ -1,4 +1,4 @@
-module github.com/ValonRexhepi/Book-Management-System-REST
+module github.com/ValonRexhepi/Book-Management-System-BACKEND
 
 go 1.18
 

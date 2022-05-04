@@ -3,7 +3,7 @@ package controllers
 import (
 	"log"
 
-	"github.com/ValonRexhepi/Book-Management-System-REST/models"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

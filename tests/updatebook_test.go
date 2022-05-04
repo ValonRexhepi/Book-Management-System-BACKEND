@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ValonRexhepi/Book-Management-System-REST/controllers"
-	"github.com/ValonRexhepi/Book-Management-System-REST/models"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/controllers"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/models"
 )
 
 // TestUpdateBookSuccess test the successfull update of a book.

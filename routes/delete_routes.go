@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/ValonRexhepi/Book-Management-System-REST/controllers"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/controllers"
 	"github.com/gin-gonic/gin"
 )
 

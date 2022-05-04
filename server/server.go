@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ValonRexhepi/Book-Management-System-REST/routes"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/routes"
 	"github.com/gin-gonic/gin"
 )
 

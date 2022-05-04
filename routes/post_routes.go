@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ValonRexhepi/Book-Management-System-REST/controllers"
-	"github.com/ValonRexhepi/Book-Management-System-REST/models"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/controllers"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/models"
 	"github.com/gin-gonic/gin"
 )
 

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/ValonRexhepi/Book-Management-System-REST/controllers"
-	"github.com/ValonRexhepi/Book-Management-System-REST/server"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/controllers"
+	"github.com/ValonRexhepi/Book-Management-System-BACKEND/server"
 )
 
 // Main function of the application, connect to the database, migrate the
