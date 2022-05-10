@@ -33,5 +33,5 @@ for the use of various technologies with Go.
 
 ## How to Use ?
 1. Launch the container with the command "docker-container up". 
-2. Run the program in Go with the command "go run main.go". 
+2. Run the program in Go with the command "go run .".
 3. Query the webserver (for example with postman) for the different available requests.
